@@ -1,0 +1,7 @@
+select f.title as title
+from film f
+join film_actor fa1 on f.film_id=fa1.film_id
+join film_actor fa2 on f.film_id=fa2.film_id
+where fa1.actor_id = 105 
+AND fa2.actor_id = 122
+order by f.title asc;

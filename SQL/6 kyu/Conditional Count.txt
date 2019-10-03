@@ -1,0 +1,11 @@
+select 
+extract(MONTH from payment_date) as month, 
+count(amount) as total_count,
+sum(amount) as total_amount,
+COUNT(amount)FILTER (WHERE staff_id = 1) as mike_count,
+COUNT(amount) FILTER (WHERE staff_id = 2) as jon_count,
+sum(amount)FILTER (WHERE staff_id = 1) as mike_amount,
+sum(amount) FILTER (WHERE staff_id = 2) as jon_amount
+from payment
+group by month
+order by month;
