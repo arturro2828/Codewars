@@ -1,0 +1,37 @@
+function valid_solution(array $m): bool {
+ 
+  $validRow = [1,2,3,4,5,6,7,8,9];
+ 
+  $result = [];
+  $counter = 0;
+  $arrayToCompare = [];
+  
+  for($row = 0; $row < 9; $row+= 3 ){
+    for($column = 0; $column < 9; $column+= 3){    
+      for($j = $row; $j < $row + 3; $j++){
+         for($k = $column; $k < $column + 3; $k++){
+             $result [] = $m[$j][$k];
+         }
+      }
+    }  
+  }
+  
+  for($i = 0; $i <= 81; $i++){
+      if((($i % 9)==0) && $i !=0){
+      $arrayToCompare = array_slice($result, $i-9, 9);
+      sort($arrayToCompare);
+     
+      
+      if($arrayToCompare == $validRow){
+          $counter++;
+      }
+      
+      }
+      
+  }
+ 
+   if($counter == 9)
+       return 1;
+   else return 0;
+  
+}
