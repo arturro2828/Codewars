@@ -1,0 +1,7 @@
+select 
+RANK() OVER (order by sum(points) desc) as rank,
+COALESCE(nullif(clan, ''), '[no clan specified]') as clan,
+sum(points) as total_points, 
+count(name) as total_people
+from people
+group by clan;
